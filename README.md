@@ -3,6 +3,15 @@
 간단한 일정 관리 앱 입니다.<br>
 댓글 기능과 댓글에 대한 답글 기능을 함께 구현했습니다.
 
+<br>
+
+-----
+
+<br>
+
+## ERD
+|![Image](https://github.com/user-attachments/assets/80727bf5-a148-4092-b6b0-1bfbb76282cd)
+|:---:|
 
 <br>
 
@@ -10,36 +19,30 @@
 
 <br>
 
-
-## ERD
-![image](https://github.com/user-attachments/assets/07835046-1d34-40ec-87af-803ac7c6487f)
-
+## API 명세서
+|[🔗API URL](https://www.notion.so/teamsparta/API-ERD-1e62dc3ef51481bf920bcf6fd64be831)
+|:---:|
 
 <br>
 
-## API 명세서
-[🔗API URL](https://www.notion.so/teamsparta/API-ERD-1e62dc3ef51481bf920bcf6fd64be831)
+-----
 
 <br>
 
 ## 기능 소개
-### 유저 도메인
-- 유저 회원가입, 로그인, 회원 조회, 회원정보 수정, 회원 탈퇴
-- 회원가입 api를 자동 로그인으로 구현하여, 회원가입 또는 로그인 api를 실행하면 JWT 토큰을 발급 받아 로그인 상태를 유지할 수 있습니다.<br>
-### 가게 도메인
-- 가게 생성, 가게 조회, 가게 수정, 가게 삭제
-- JWT에서 로그인한 유저의 권한(일반 사용자 권한, 가게 운영자 권한)을 추출하여, 가게 운영자 권한을 가진 유저만 가게 생성, 가게 수정, 가게 삭제를 할 수 있습니다.<br>
-### 메뉴 도메인
-- 메뉴 생성, 메뉴 조회, 메뉴 수정, 메뉴 삭제
-- JWT에서 로그인한 유저의 권한(일반 사용자 권한, 가게 운영자 권한)을 추출하여, 가게 운영자 권한을 가진 유저만 메뉴 생성, 메뉴 수정, 메뉴 삭제를 할 수 있습니다.<br>
-### 주문 도메인
-- 주문 요청, 주문 조회, 주문 상태 변경, 주문 삭제
-- JWT에서 로그인한 유저의 권한(일반 사용자 권한, 가게 운영자 권한)을 추출하여, 가게 운영자 권한을 가진 유저는 주문 조회, 주문 수정, 주문 삭제를 할 수 있습니다.
-- 일반 사용자 권한을 가진 유저는 주문 요청, 주문 조회, 주문 삭제를 할 수 있습니다.<br>
-### 리뷰 도메인
-- 리뷰 생성, 리뷰 답글(사장님 권한), 리뷰 조회, 리뷰 삭제
-- JWT에서 로그인한 유저의 권한(일반 사용자 권한, 가게 운영자 권한)을 추출하여, 일반 사용자 권한을 가진 유저 중에 주문을 생성한 유저만 리뷰 생성, 리뷰 수정, 리뷰 삭제를 할 수 있습니다.
-- 가게 운영자 권한을 가진 유저만 주문 조회, 주문 수정, 주문 삭제를 할 수 있습니다.<br>
+
+### 일정 도메인
+- 일정 생성, 일정 목록 조회, 일정 단건 상세 조회, 일정 수정, 일정 삭제<br>
+
+### 댓글 도메인
+- 댓글 생성, 댓글 수정, 댓글 삭제<br>
+
+### 대댓글 도메인
+- 댓글에 대한 답글 생성, 답글 조회, 답글 수정, 답글 삭제<br>
+
+<br>
+
+-----
 
 <br>
 
@@ -48,29 +51,26 @@
 
 <br>
 
+-----
+
+<br>
+
 ## 프로젝트 구조
 ```bas      
 📁 OutsourcingProject
             └─ common
-                   ├─aop
-                   ├─config
                    ├─dto
                    ├─entity
                    ├─enums
                    ├─exception
-                   ├─filter
-                   └─util
             └─ domain
-                   ├─menu
+                   ├─comment
                    │  └─controller, dto, entity, repository, service
-                   ├─order
+                   ├─reply
                    │  └─controller, dto, entity, repository, service
-                   ├─review
-                   │  └─controller, dto, entity, repository, service
-                   ├─store
-                   │  └─controller, dto, entity, repository, service
-                   └─user
+                   └─schedule
                       └─controller, dto, entity, repository, service
 ```
+
 <br>
 <br>
