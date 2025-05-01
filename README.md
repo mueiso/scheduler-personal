@@ -18,7 +18,7 @@
 <br>
 
 ## API 명세서
-[🔗API URL]([https://www.notion.so/Outsourcing-Project-1e3290bb7298805b9628d849e879ba83](https://www.notion.so/teamsparta/API-ERD-1e62dc3ef51481bf920bcf6fd64be831))
+[🔗API URL](https://www.notion.so/teamsparta/API-ERD-1e62dc3ef51481bf920bcf6fd64be831)
 
 <br>
 
