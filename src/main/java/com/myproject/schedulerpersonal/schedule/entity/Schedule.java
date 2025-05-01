@@ -37,13 +37,20 @@ public class Schedule extends BaseEntity {
 	private Long commentCount;
 
 	@Builder
+	public Schedule (String title, String content, String writerID) {
+
+		this.title = title;
+		this.content = content;
+		this.writerID = writerID;
+	}
+
+	@Builder
 	public Schedule (String title, String content, String writerID, Long commentCount) {
 
 		this.title = title;
 		this.content = content;
 		this.writerID = writerID;
 		this.commentCount = commentCount;
-
 	}
 
 	public void updateSchedule () {

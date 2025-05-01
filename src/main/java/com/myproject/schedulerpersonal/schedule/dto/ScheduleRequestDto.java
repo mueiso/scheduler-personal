@@ -14,12 +14,7 @@ public class ScheduleRequestDto {
 	@NotBlank(message = "내용을 입력해주세요.")
 	private final String content;
 
-
-
-
-
-
-
-
+	@NotBlank(message = "작성자명을 입력해주세요.")
+	private final String writerID;
 
 }

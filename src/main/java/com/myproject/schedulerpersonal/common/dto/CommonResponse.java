@@ -5,6 +5,9 @@ import org.springframework.http.HttpStatus;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.myproject.schedulerpersonal.common.enums.BaseCode;
 
+import lombok.Getter;
+
+@Getter
 public class CommonResponse<T> {
 	private final HttpStatus httpStatus;
 	private final String message;
