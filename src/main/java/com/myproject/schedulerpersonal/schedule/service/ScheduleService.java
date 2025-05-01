@@ -1,4 +1,37 @@
 package com.myproject.schedulerpersonal.schedule.service;
 
+import org.springframework.stereotype.Service;
+
+import com.myproject.schedulerpersonal.schedule.dto.ScheduleRequestDto;
+import com.myproject.schedulerpersonal.schedule.dto.ScheduleResponseDto;
+import com.myproject.schedulerpersonal.schedule.entity.Schedule;
+import com.myproject.schedulerpersonal.schedule.repository.ScheduleRespository;
+
+import lombok.RequiredArgsConstructor;
+
+@Service
+@RequiredArgsConstructor
 public class ScheduleService {
+
+	private final ScheduleRespository scheduleRespository;
+
+	public ScheduleResponseDto saveSchedule (ScheduleRequestDto scheduleRequestDto) {
+
+		Schedule schedule = Schedule.builder()
+			.title(scheduleRequestDto.getTitle())
+			.content(scheduleRequestDto.getContent())
+			.build();
+
+		Schedule savedSchedule = scheduleRespository.save(schedule);
+
+		return new ScheduleResponseDto(savedSchedule);
+	}
+
+
+
+
+
+
+
+
 }
