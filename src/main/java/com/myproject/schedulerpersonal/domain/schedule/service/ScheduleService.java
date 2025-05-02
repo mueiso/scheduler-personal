@@ -12,6 +12,7 @@ import com.myproject.schedulerpersonal.domain.schedule.dto.ScheduleResponseDto;
 import com.myproject.schedulerpersonal.domain.schedule.entity.Schedule;
 import com.myproject.schedulerpersonal.domain.schedule.repository.ScheduleRepository;
 import com.myproject.schedulerpersonal.domain.user.entity.User;
+import com.myproject.schedulerpersonal.domain.user.repository.UserRepository;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -21,6 +22,7 @@ import lombok.RequiredArgsConstructor;
 public class ScheduleService {
 
 	private final ScheduleRepository scheduleRepository;
+	private final UserRepository userRepository;
 	private final EntityFetcher entityFetcher;
 
 	// 일정 생성
@@ -44,7 +46,11 @@ public class ScheduleService {
 	@Transactional
 	public List<ScheduleResponseDto> getAllSchedules(Long userId) {
 
-		List<Schedule> scheduleList = scheduleRepository.findAllByUserId(userId);
+		// Schedule schedule = entityFetcher.getScheduleOrThrow(scheduleId);
+
+		User user = entityFetcher.getUserOrThrow(userId);
+
+		List<Schedule> scheduleList = scheduleRepository.findAllByUser(user);
 
 		if (scheduleList.isEmpty()) {
 			throw new CustomException(ErrorCode.SCHEDULE_NOT_FOUND);
