@@ -1,14 +1,16 @@
 package com.myproject.schedulerpersonal.schedule.entity;
 
-import org.springframework.util.StringUtils;
-
 import com.myproject.schedulerpersonal.common.entity.BaseEntity;
+import com.myproject.schedulerpersonal.user.entity.User;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Builder;
 import lombok.Getter;
@@ -30,42 +32,28 @@ public class Schedule extends BaseEntity {
 	@Column(nullable = false)
 	private String content;
 
-	@Column(nullable = false)
-	private String writerId;
-
-	@Column(nullable = true)
-	private Long commentCount;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "user_id")
+	private User user;
 
 	@Builder
-	public Schedule (String title, String content, String writerId) {
+	public Schedule (String title, String content, User user) {
 
 		this.title = title;
 		this.content = content;
-		this.writerId = writerId;
+		this.user = user;
 	}
 
-	@Builder
-	public Schedule (String title, String content, String writerId, Long commentCount) {
-
-		this.title = title;
-		this.content = content;
-		this.writerId = writerId;
-		this.commentCount = commentCount;
-	}
-
-	public void updateSchedule () {
-
-		if (!StringUtils.isEmpty(title)) {
-			this.title = title;
-		}
-
-		if (!StringUtils.isEmpty(content)) {
-			this.content = content;
-		}
-	}
-
-
-
+	// public void updateSchedule () {
+	//
+	// 	if (!StringUtils.isEmpty(title)) {
+	// 		this.title = title;
+	// 	}
+	//
+	// 	if (!StringUtils.isEmpty(content)) {
+	// 		this.content = content;
+	// 	}
+	// }
 
 
 }

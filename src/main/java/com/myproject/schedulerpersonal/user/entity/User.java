@@ -23,14 +23,11 @@ public class User extends BaseEntity {
 	private Long id;
 
 	@Column(nullable = false)
-	private String name;
+	private String userName;
 
 	@Builder
-	public User (String name) {
-		this.name = name;
+	public User (String userName) {
+		this.userName = userName;
 	}
-
-
-
 
 }

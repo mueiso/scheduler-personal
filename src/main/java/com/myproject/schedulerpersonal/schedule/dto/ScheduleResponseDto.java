@@ -17,7 +17,7 @@ public class ScheduleResponseDto {
 
 	private final String content;
 
-	private final String writerId;
+	private final String userName;
 
 	private final LocalDateTime createdAt;
 
@@ -28,7 +28,7 @@ public class ScheduleResponseDto {
 		this.id = schedule.getId();
 		this.title = schedule.getTitle();
 		this.content = schedule.getContent();
-		this.writerId = schedule.getWriterId();
+		this.userName = schedule.getUser().getUserName();
 		this.createdAt = schedule.getCreatedAt();
 		this.updatedAt = schedule.getUpdatedAt();
 	}

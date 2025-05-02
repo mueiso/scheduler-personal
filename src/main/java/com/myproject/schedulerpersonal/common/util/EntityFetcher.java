@@ -1,0 +1,26 @@
+package com.myproject.schedulerpersonal.common.util;
+
+import org.springframework.stereotype.Component;
+
+import com.myproject.schedulerpersonal.common.enums.ErrorCode;
+import com.myproject.schedulerpersonal.common.exception.CustomException;
+import com.myproject.schedulerpersonal.schedule.repository.ScheduleRepository;
+import com.myproject.schedulerpersonal.user.entity.User;
+import com.myproject.schedulerpersonal.user.repository.UserRepository;
+
+import lombok.RequiredArgsConstructor;
+
+@Component
+@RequiredArgsConstructor
+public class EntityFetcher {
+
+	private final UserRepository userRepository;
+	private final ScheduleRepository scheduleRepository;
+
+	public User getUserOrThrow(Long userId) {
+		return userRepository.findUserById(userId)
+			.orElseThrow(() -> new CustomException(ErrorCode.USER_NOT_FOUND));
+	}
+
+
+}
