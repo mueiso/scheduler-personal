@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.myproject.schedulerpersonal.common.dto.CommonResponse;
@@ -24,18 +25,18 @@ public class ScheduleController {
 
 	private final ScheduleService scheduleService;
 
-	// 일정 생성
+	// 1. 일정 생성
 	@PostMapping
 	public CommonResponse<ScheduleResponseDto> createSchedule (@RequestBody @Valid ScheduleRequestDto requestDto) {
 
 		return CommonResponse.of(SuccessCode.CREATE_SCHEDULE_SUCCESS, scheduleService.saveSchedule(requestDto));
 	}
 
-	// 일정 목록 조회
+	// 2. 일정 목록 조회
 	@GetMapping
-	public CommonResponse<List<ScheduleResponseDto>> getScheduleList () {
+	public CommonResponse<List<ScheduleResponseDto>> getScheduleList (@RequestParam String writerId) {
 
-		return CommonResponse.of(SuccessCode.GET_ALL_SCHEDULE_SUCCESS, scheduleService.getAllSchedules());
+		return CommonResponse.of(SuccessCode.GET_ALL_SCHEDULE_SUCCESS, scheduleService.getAllSchedules(writerId));
 	}
 
 	// 일정 단건 상세 조회

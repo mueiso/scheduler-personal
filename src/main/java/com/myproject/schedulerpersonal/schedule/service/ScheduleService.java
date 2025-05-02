@@ -1,14 +1,15 @@
 package com.myproject.schedulerpersonal.schedule.service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
+import com.myproject.schedulerpersonal.common.enums.ErrorCode;
+import com.myproject.schedulerpersonal.common.exception.CustomException;
 import com.myproject.schedulerpersonal.schedule.dto.ScheduleRequestDto;
 import com.myproject.schedulerpersonal.schedule.dto.ScheduleResponseDto;
 import com.myproject.schedulerpersonal.schedule.entity.Schedule;
-import com.myproject.schedulerpersonal.schedule.repository.ScheduleRespository;
+import com.myproject.schedulerpersonal.schedule.repository.ScheduleRepository;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -17,7 +18,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class ScheduleService {
 
-	private final ScheduleRespository scheduleRespository;
+	private final ScheduleRepository scheduleRespository;
 
 	// 일정 생성
 	@Transactional
@@ -26,7 +27,7 @@ public class ScheduleService {
 		Schedule schedule = Schedule.builder()
 			.title(scheduleRequestDto.getTitle())
 			.content(scheduleRequestDto.getContent())
-			.writerID(scheduleRequestDto.getWriterID())
+			.writerId(scheduleRequestDto.getWriterId())
 			.build();
 
 		Schedule savedSchedule = scheduleRespository.save(schedule);
@@ -36,21 +37,19 @@ public class ScheduleService {
 
 	// 일정 목록 조회
 	@Transactional
-	public List<ScheduleResponseDto> getAllSchedules () {
+	public List<ScheduleResponseDto> getAllSchedules (String writerId) {
 
-		List<Schedule> schduleList = scheduleRespository.findAll();
+		List<Schedule> scheduleList = scheduleRespository.findAllByWriterId(writerId);
 
-		List<ScheduleResponseDto> scheduleResponseDtoList = schduleList.stream()
-			.map(schedule -> new ScheduleResponseDto(schedule))
-			.collect(Collectors.toList());
+		if (scheduleList.isEmpty()) {
+			throw new CustomException(ErrorCode.SCHEDULE_NOT_FOUND);
+		}
 
-		return scheduleResponseDtoList;
-
+		// List<Schedule> → List<ScheduleResponseDto>로 변환된 리스트를 반환
+		return scheduleList.stream()
+			.map(ScheduleResponseDto::new)
+			.toList();
 	}
-
-
-
-
 
 
 

@@ -31,25 +31,25 @@ public class Schedule extends BaseEntity {
 	private String content;
 
 	@Column(nullable = false)
-	private String writerID;
+	private String writerId;
 
 	@Column(nullable = true)
 	private Long commentCount;
 
 	@Builder
-	public Schedule (String title, String content, String writerID) {
+	public Schedule (String title, String content, String writerId) {
 
 		this.title = title;
 		this.content = content;
-		this.writerID = writerID;
+		this.writerId = writerId;
 	}
 
 	@Builder
-	public Schedule (String title, String content, String writerID, Long commentCount) {
+	public Schedule (String title, String content, String writerId, Long commentCount) {
 
 		this.title = title;
 		this.content = content;
-		this.writerID = writerID;
+		this.writerId = writerId;
 		this.commentCount = commentCount;
 	}
 

@@ -1,4 +1,31 @@
 package com.myproject.schedulerpersonal.common.enums;
 
-public enum ErrorCode {
+import org.springframework.http.HttpStatus;
+
+public enum ErrorCode implements BaseCode {
+
+	// Schedule
+	SCHEDULE_NOT_FOUND(HttpStatus.NOT_FOUND, "일정을 찾을 수 없습니다.");
+
+	private final HttpStatus httpStatus;
+	private final String message;
+
+	ErrorCode(HttpStatus httpStatus, String message) {
+		this.httpStatus = httpStatus;
+		this.message = message;
+	}
+
+	@Override
+	public HttpStatus getStatus() {
+		return httpStatus;
+	}
+
+	@Override
+	public String getMessage() {
+		return message;
+	}
+
+
+
+
 }

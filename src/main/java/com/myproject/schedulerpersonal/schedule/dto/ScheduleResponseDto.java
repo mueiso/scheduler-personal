@@ -11,11 +11,13 @@ import lombok.Getter;
 @AllArgsConstructor
 public class ScheduleResponseDto {
 
-	private final Long scheduleId;
+	private final Long id;
 
 	private final String title;
 
 	private final String content;
+
+	private final String writerId;
 
 	private final LocalDateTime createdAt;
 
@@ -23,14 +25,12 @@ public class ScheduleResponseDto {
 
 	public ScheduleResponseDto (Schedule schedule) {
 
-		this.scheduleId = schedule.getId();
+		this.id = schedule.getId();
 		this.title = schedule.getTitle();
 		this.content = schedule.getContent();
+		this.writerId = schedule.getWriterId();
 		this.createdAt = schedule.getCreatedAt();
 		this.updatedAt = schedule.getUpdatedAt();
 	}
-
-
-
 
 }

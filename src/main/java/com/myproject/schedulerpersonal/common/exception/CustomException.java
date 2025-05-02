@@ -1,7 +1,22 @@
 package com.myproject.schedulerpersonal.common.exception;
 
+import com.myproject.schedulerpersonal.common.enums.ErrorCode;
+
 public class CustomException extends RuntimeException {
-	public CustomException(String message) {
-		super(message);
+
+	private final ErrorCode errorCode;
+
+	public CustomException(ErrorCode errorCode) {
+
+		// 메시지만 전달
+		super(errorCode.getMessage());
+
+		// 상태코드는 따로 필드로 보관
+		this.errorCode = errorCode;
 	}
+
+	public ErrorCode getErrorCode() {
+		return errorCode;
+	}
+
 }
