@@ -4,9 +4,9 @@ import org.springframework.stereotype.Component;
 
 import com.myproject.schedulerpersonal.common.enums.ErrorCode;
 import com.myproject.schedulerpersonal.common.exception.CustomException;
-import com.myproject.schedulerpersonal.schedule.repository.ScheduleRepository;
-import com.myproject.schedulerpersonal.user.entity.User;
-import com.myproject.schedulerpersonal.user.repository.UserRepository;
+import com.myproject.schedulerpersonal.domain.schedule.repository.ScheduleRepository;
+import com.myproject.schedulerpersonal.domain.user.entity.User;
+import com.myproject.schedulerpersonal.domain.user.repository.UserRepository;
 
 import lombok.RequiredArgsConstructor;
 
