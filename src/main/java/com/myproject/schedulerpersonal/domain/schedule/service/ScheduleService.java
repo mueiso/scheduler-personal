@@ -9,10 +9,10 @@ import com.myproject.schedulerpersonal.common.exception.CustomException;
 import com.myproject.schedulerpersonal.common.util.EntityFetcher;
 import com.myproject.schedulerpersonal.domain.schedule.dto.ScheduleRequestDto;
 import com.myproject.schedulerpersonal.domain.schedule.dto.ScheduleResponseDto;
+import com.myproject.schedulerpersonal.domain.schedule.dto.UpdateScheduleRequestDto;
 import com.myproject.schedulerpersonal.domain.schedule.entity.Schedule;
 import com.myproject.schedulerpersonal.domain.schedule.repository.ScheduleRepository;
 import com.myproject.schedulerpersonal.domain.user.entity.User;
-import com.myproject.schedulerpersonal.domain.user.repository.UserRepository;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -22,19 +22,19 @@ import lombok.RequiredArgsConstructor;
 public class ScheduleService {
 
 	private final ScheduleRepository scheduleRepository;
-	private final UserRepository userRepository;
 	private final EntityFetcher entityFetcher;
 
-	// 일정 생성
+	// 1. 일정 생성
 	@Transactional
-	public ScheduleResponseDto createSchedule(Long userId, ScheduleRequestDto scheduleRequestDto) {
+	public ScheduleResponseDto createSchedule(Long userId, ScheduleRequestDto requestDto) {
 
 		User user = entityFetcher.getUserOrThrow(userId);
 
 		Schedule schedule = Schedule.builder()
-			.title(scheduleRequestDto.getTitle())
-			.content(scheduleRequestDto.getContent())
+			.title(requestDto.getTitle())
+			.content(requestDto.getContent())
 			.user(user)
+			.commentCount(requestDto.getCommentCount())
 			.build();
 
 		Schedule savedSchedule = scheduleRepository.save(schedule);
@@ -42,7 +42,7 @@ public class ScheduleService {
 		return new ScheduleResponseDto(savedSchedule);
 	}
 
-	// 일정 목록 조회
+	// 2. 일정 목록 조회
 	@Transactional
 	public List<ScheduleResponseDto> getAllSchedules(Long userId) {
 
@@ -61,5 +61,32 @@ public class ScheduleService {
 			.map(ScheduleResponseDto::new)
 			.toList();
 	}
+
+	// 3. 일정 단건 상세 조회
+	// @Transactional
+	// public ScheduleResponseDto getScheduleDetail(Long scheduleId) {
+	//
+	// 	Schedule schedule = entityFetcher.getScheduleOrThrow(scheduleId);
+	//
+	//
+	//
+	//
+	// }
+
+	// 4. 일정 수정
+	@Transactional
+	public void editSchedule(Long id, UpdateScheduleRequestDto updateScheduleDto) {
+
+		Schedule schedule = entityFetcher.getScheduleOrThrow(id);
+
+		schedule.updateSchedule(updateScheduleDto.getTitle(), updateScheduleDto.getContent());
+	}
+
+	// 5. 일정 삭제
+
+
+
+
+
 
 }

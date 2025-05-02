@@ -28,7 +28,4 @@ public enum ErrorCode implements BaseCode {
 		return message;
 	}
 
-
-
-
 }

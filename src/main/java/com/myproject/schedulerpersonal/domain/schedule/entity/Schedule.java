@@ -3,6 +3,7 @@ package com.myproject.schedulerpersonal.domain.schedule.entity;
 import com.myproject.schedulerpersonal.common.entity.BaseEntity;
 import com.myproject.schedulerpersonal.domain.user.entity.User;
 
+import io.micrometer.common.util.StringUtils;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -36,24 +37,28 @@ public class Schedule extends BaseEntity {
 	@JoinColumn(name = "user_id")
 	private User user;
 
+	@Column(nullable = true)
+	private Integer commentCount = 0;
+
 	@Builder
-	public Schedule (String title, String content, User user) {
+	public Schedule (String title, String content, User user, Integer commentCount) {
 
 		this.title = title;
 		this.content = content;
 		this.user = user;
+		this.commentCount = commentCount;
 	}
 
-	// public void updateSchedule () {
-	//
-	// 	if (!StringUtils.isEmpty(title)) {
-	// 		this.title = title;
-	// 	}
-	//
-	// 	if (!StringUtils.isEmpty(content)) {
-	// 		this.content = content;
-	// 	}
-	// }
+	public void updateSchedule (String title, String content) {
+
+		if (!StringUtils.isEmpty(title)) {
+			this.title = title;
+		}
+
+		if (!StringUtils.isEmpty(content)) {
+			this.content = content;
+		}
+	}
 
 
 }
