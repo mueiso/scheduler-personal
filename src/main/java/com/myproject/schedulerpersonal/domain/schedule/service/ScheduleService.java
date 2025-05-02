@@ -62,5 +62,4 @@ public class ScheduleService {
 			.toList();
 	}
 
-
 }
