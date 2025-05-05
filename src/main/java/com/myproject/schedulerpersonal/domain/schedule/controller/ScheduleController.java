@@ -2,6 +2,7 @@ package com.myproject.schedulerpersonal.domain.schedule.controller;
 
 import java.util.List;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -35,7 +36,7 @@ public class ScheduleController {
 	@GetMapping("/{userId}/schedules")
 	public CommonResponse<List<ScheduleResponseDto>> getScheduleList(@PathVariable Long userId) {
 
-		return CommonResponse.of(SuccessCode.GET_ALL_SCHEDULE_SUCCESS, scheduleService.getAllSchedules(userId));
+		return CommonResponse.of(SuccessCode.GET_ALL_SCHEDULES_SUCCESS, scheduleService.getAllSchedules(userId));
 	}
 
 	// 3. 일정 단건 상세 조회
@@ -47,9 +48,7 @@ public class ScheduleController {
 
 	// 4. 일정 수정
 	@PatchMapping("/schedules/{scheduleId}")
-	public CommonResponse<Void> updateSchedule(
-		@PathVariable Long scheduleId,
-		@RequestBody UpdateScheduleRequestDto updateScheduleDto) {
+	public CommonResponse<Void> updateSchedule(@PathVariable Long scheduleId, @RequestBody UpdateScheduleRequestDto updateScheduleDto) {
 
 		scheduleService.editSchedule(scheduleId, updateScheduleDto);
 
@@ -57,6 +56,13 @@ public class ScheduleController {
 	}
 
 	// 5. 일정 삭제
+	@DeleteMapping("/schedules/{scheduleId}")
+	public CommonResponse<Void> deleteSchedule(@PathVariable Long scheduleId) {
+
+		scheduleService.deleteSchedule(scheduleId);
+
+		return CommonResponse.of(SuccessCode.DELETE_SCHEDULE_SUCCESS);
+	}
 
 
 }

@@ -9,9 +9,10 @@ public enum SuccessCode implements BaseCode {
 
 	// Schedule
 	CREATE_SCHEDULE_SUCCESS(HttpStatus.CREATED, "일정이 생성되었습니다."),
-	GET_ALL_SCHEDULE_SUCCESS(HttpStatus.OK, "일정 목록을 조회합니다."),
+	GET_ALL_SCHEDULES_SUCCESS(HttpStatus.OK, "일정 목록을 조회합니다."),
 	GET_SCHEDULE_SUCCESS(HttpStatus.FOUND,"일정 상세정보를 조회합니다."),
-	UPDATE_SCHEDULE_SUCCESS(HttpStatus.OK,"일정을 수정하였습니다.");
+	UPDATE_SCHEDULE_SUCCESS(HttpStatus.OK,"일정을 수정했습니다."),
+	DELETE_SCHEDULE_SUCCESS(HttpStatus.OK, "일정을 삭제했습니다.");
 
 	private final HttpStatus httpStatus;
 	private final String message;

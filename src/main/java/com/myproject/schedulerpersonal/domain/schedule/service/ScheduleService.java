@@ -46,8 +46,6 @@ public class ScheduleService {
 	@Transactional
 	public List<ScheduleResponseDto> getAllSchedules(Long userId) {
 
-		// Schedule schedule = entityFetcher.getScheduleOrThrow(scheduleId);
-
 		User user = entityFetcher.getUserOrThrow(userId);
 
 		List<Schedule> scheduleList = scheduleRepository.findAllByUser(user);
@@ -83,6 +81,13 @@ public class ScheduleService {
 	}
 
 	// 5. 일정 삭제
+	@Transactional
+	public void deleteSchedule(Long id) {
+
+		Schedule schedule = entityFetcher.getScheduleOrThrow(id);
+
+		scheduleRepository.delete(schedule);
+	}
 
 
 
