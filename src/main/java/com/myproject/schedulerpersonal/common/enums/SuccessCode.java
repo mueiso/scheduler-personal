@@ -15,7 +15,9 @@ public enum SuccessCode implements BaseCode {
 	DELETE_SCHEDULE_SUCCESS(HttpStatus.OK, "일정을 삭제했습니다."),
 
 	// Comment
-	SAVE_COMMENT_SUCCESS(HttpStatus.CREATED,"댓글을 저장했습니다.");
+	SAVE_COMMENT_SUCCESS(HttpStatus.CREATED,"댓글을 저장했습니다."),
+	GET_ALL_COMMENTS_SUCCESS(HttpStatus.FOUND,"모든 댓글을 불러옵니다.");
+
 
 	private final HttpStatus httpStatus;
 	private final String message;

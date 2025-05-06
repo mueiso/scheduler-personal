@@ -1,7 +1,11 @@
 package com.myproject.schedulerpersonal.domain.comment.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
+import com.myproject.schedulerpersonal.common.enums.ErrorCode;
+import com.myproject.schedulerpersonal.common.exception.CustomException;
 import com.myproject.schedulerpersonal.common.util.EntityFetcher;
 import com.myproject.schedulerpersonal.domain.comment.dto.CommentRequestDto;
 import com.myproject.schedulerpersonal.domain.comment.dto.CommentResponseDto;
@@ -39,7 +43,22 @@ public class CommentService {
 
 	}
 
-	// 2. 댓글 조회
+	// 2. 일정 상세 조회 시 모든 댓글 조회
+	public List<CommentResponseDto> getCommentList(Long scheduleId) {
+
+		Schedule schedule = entityFetcher.getScheduleOrThrow(scheduleId);
+
+		List<Comment> commentList = commentRepository.findAllBySchedule(schedule);
+
+		if(commentList.isEmpty()) {
+			throw new CustomException(ErrorCode.COMMENT_NOT_FOUND);
+		}
+
+		// List<Comment> → List<CommentResponseDto>로 변환해서 반환
+		return commentList.stream()
+			.map(CommentResponseDto::new)
+			.toList();
+	}
 
 	// 3. 댓글 수정
 

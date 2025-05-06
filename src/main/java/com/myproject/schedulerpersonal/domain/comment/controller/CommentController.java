@@ -1,5 +1,8 @@
 package com.myproject.schedulerpersonal.domain.comment.controller;
 
+import java.util.List;
+
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -26,7 +29,12 @@ public class CommentController {
 		return CommonResponse.of(SuccessCode.SAVE_COMMENT_SUCCESS, commentService.createComment(scheduleId, commentRequestDto));
 	}
 
-	// 2. 댓글 조회
+	// 2. 일정 상세 조회 시 모든 댓글 조회
+	@GetMapping("/schedules/{scheduleId}/comments")
+	public CommonResponse<List<CommentResponseDto>> getAllComments(@PathVariable Long scheduleId) {
+
+		return CommonResponse.of(SuccessCode.GET_ALL_COMMENTS_SUCCESS, commentService.getCommentList(scheduleId));
+	}
 
 	// 3. 댓글 수정
 
