@@ -18,8 +18,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Getter
-@NoArgsConstructor
 @Entity
+@NoArgsConstructor
 @Table(name = "schedules")
 public class Schedule extends BaseEntity {
 
@@ -41,7 +41,7 @@ public class Schedule extends BaseEntity {
 	private Integer commentCount = 0;
 
 	@Builder
-	public Schedule (String title, String content, User user, Integer commentCount) {
+	public Schedule(String title, String content, User user, Integer commentCount) {
 
 		this.title = title;
 		this.content = content;
@@ -49,13 +49,13 @@ public class Schedule extends BaseEntity {
 		this.commentCount = commentCount;
 	}
 
-	public void updateSchedule (String title, String content) {
+	public void updateSchedule(String title, String content) {
 
-		if (!StringUtils.isEmpty(title)) {
+		if(!StringUtils.isEmpty(title)) {
 			this.title = title;
 		}
 
-		if (!StringUtils.isEmpty(content)) {
+		if(!StringUtils.isEmpty(content)) {
 			this.content = content;
 		}
 	}
