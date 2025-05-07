@@ -33,7 +33,7 @@ public class CommentController {
 			commentService.createComment(scheduleId, commentRequestDto));
 	}
 
-	// 2. TODO 일정 상세 조회 시 모든 댓글 조회
+	// 2. TODO 일정 상세 조회 시 모든 댓글 조회 (오름차순)
 	@GetMapping("/schedules/{scheduleId}/comments")
 	public CommonResponse<List<CommentResponseDto>> getAllComments(@PathVariable Long scheduleId) {
 

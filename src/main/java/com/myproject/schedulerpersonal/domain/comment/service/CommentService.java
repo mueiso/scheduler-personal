@@ -45,7 +45,7 @@ public class CommentService {
 
 	}
 
-	// 2. TODO 일정 상세 조회 시 모든 댓글 조회
+	// 2. TODO 일정 상세 조회 시 모든 댓글 조회 (오름차순)
 	@Transactional
 	public List<CommentResponseDto> getCommentList(Long scheduleId) {
 
