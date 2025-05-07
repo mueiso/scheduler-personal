@@ -75,7 +75,7 @@ public class ScheduleService {
 		List<Comment> commentList = commentRepository.findAllBySchedule(schedule);
 
 		List<CommentResponseDto> commentResponseDtoList = commentList.stream()
-			.map(comment -> new CommentResponseDto(comment))
+			.map(CommentResponseDto::new)
 			.collect(Collectors.toList());
 
 		return new ScheduleWithCommentListResponseDto(schedule, commentResponseDtoList);
