@@ -38,10 +38,10 @@ public class Schedule extends BaseEntity {
 	private User user;
 
 	@Column(nullable = false)
-	private Integer commentCount = 0;
+	private int commentCount = 0;
 
 	@Builder
-	public Schedule(String title, String content, User user, Integer commentCount) {
+	public Schedule(String title, String content, User user, int commentCount) {
 
 		this.title = title;
 		this.content = content;

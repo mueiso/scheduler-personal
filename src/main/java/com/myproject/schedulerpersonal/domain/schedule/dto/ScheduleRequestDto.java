@@ -17,6 +17,4 @@ public class ScheduleRequestDto {
 	@NotBlank(message = "작성자명을 입력해주세요.")
 	private final String userName;
 
-	private Integer commentCount;
-
 }
