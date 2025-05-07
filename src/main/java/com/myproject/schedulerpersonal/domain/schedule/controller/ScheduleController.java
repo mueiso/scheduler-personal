@@ -40,7 +40,7 @@ public class ScheduleController {
 		return CommonResponse.of(SuccessCode.GET_ALL_SCHEDULES_SUCCESS, scheduleService.getAllSchedules(userId));
 	}
 
-	// 3. TODO 일정 단건 상세 조회 → 댓글 오름차순으로
+	// 3. 일정 단건 상세 조회
 	@GetMapping("/schedules/{scheduleId}")
 	public CommonResponse<ScheduleWithCommentListResponseDto> getScheduleDetail(@PathVariable Long scheduleId) {
 

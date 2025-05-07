@@ -37,7 +37,7 @@ public class Schedule extends BaseEntity {
 	@JoinColumn(name = "user_id")
 	private User user;
 
-	@Column(nullable = true)
+	@Column(nullable = false)
 	private Integer commentCount = 0;
 
 	@Builder
@@ -59,6 +59,5 @@ public class Schedule extends BaseEntity {
 			this.content = content;
 		}
 	}
-
 
 }

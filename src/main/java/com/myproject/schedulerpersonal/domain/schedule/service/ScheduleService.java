@@ -48,7 +48,7 @@ public class ScheduleService {
 		return new ScheduleResponseDto(savedSchedule);
 	}
 
-	// 2. 일정 목록 조회
+	// 2. TODO 일정 목록 조회 - commentCount
 	@Transactional
 	public List<ScheduleResponseDto> getAllSchedules(Long userId) {
 
@@ -60,13 +60,13 @@ public class ScheduleService {
 			throw new CustomException(ErrorCode.SCHEDULE_NOT_FOUND);
 		}
 
-		// List<Schedule> → List<ScheduleResponseDto>로 변환된 리스트를 반환
+		// List<Schedule> → List<ScheduleWithCommentCountResponseDto>로 변환된 리스트를 반환
 		return scheduleList.stream()
 			.map(ScheduleResponseDto::new)
 			.toList();
 	}
 
-	// 3. TODO 일정 단건 상세 조회 → 댓글 오름차순으로
+	// 3. 일정 단건 상세 조회
 	@Transactional
 	public ScheduleWithCommentListResponseDto getScheduleWithCommentList(Long scheduleId) {
 

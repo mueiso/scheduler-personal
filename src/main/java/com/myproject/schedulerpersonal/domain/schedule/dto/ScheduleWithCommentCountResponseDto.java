@@ -9,7 +9,7 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public class ScheduleResponseDto {
+public class ScheduleWithCommentCountResponseDto {
 
 	private final Long id;
 
@@ -19,19 +19,19 @@ public class ScheduleResponseDto {
 
 	private final String userName;
 
-	// private final Integer commentCount;
+	private final int commentCount;
 
 	private final LocalDateTime createdAt;
 
 	private final LocalDateTime updatedAt;
 
-	public ScheduleResponseDto (Schedule schedule) {
+	public ScheduleWithCommentCountResponseDto(Schedule schedule, int commentCount) {
 
 		this.id = schedule.getId();
 		this.title = schedule.getTitle();
 		this.content = schedule.getContent();
 		this.userName = schedule.getUser().getUserName();
-		// this.commentCount = schedule.getCommentCount();
+		this.commentCount = commentCount;
 		this.createdAt = schedule.getCreatedAt();
 		this.updatedAt = schedule.getUpdatedAt();
 	}
