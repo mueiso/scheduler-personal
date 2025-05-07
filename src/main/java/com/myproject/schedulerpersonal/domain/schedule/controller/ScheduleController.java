@@ -14,6 +14,7 @@ import com.myproject.schedulerpersonal.common.dto.CommonResponse;
 import com.myproject.schedulerpersonal.common.enums.SuccessCode;
 import com.myproject.schedulerpersonal.domain.schedule.dto.ScheduleRequestDto;
 import com.myproject.schedulerpersonal.domain.schedule.dto.ScheduleResponseDto;
+import com.myproject.schedulerpersonal.domain.schedule.dto.ScheduleWithCommentListResponseDto;
 import com.myproject.schedulerpersonal.domain.schedule.dto.UpdateScheduleRequestDto;
 import com.myproject.schedulerpersonal.domain.schedule.service.ScheduleService;
 
@@ -39,12 +40,12 @@ public class ScheduleController {
 		return CommonResponse.of(SuccessCode.GET_ALL_SCHEDULES_SUCCESS, scheduleService.getAllSchedules(userId));
 	}
 
-	// 3. 일정 단건 상세 조회
-	// @GetMapping("/schedules/{scheduleId}")
-	// public CommonResponse<ScheduleResponseDto> getSchedule(@PathVariable Long scheduleId) {
-	//
-	// 	// return CommonResponse.of(SuccessCode.GET_SCHEDULE_SUCCESS, scheduleService.)
-	// }
+	// 3. TODO 일정 단건 상세 조회 → 댓글 오름차순으로
+	@GetMapping("/schedules/{scheduleId}")
+	public CommonResponse<ScheduleWithCommentListResponseDto> getScheduleDetail(@PathVariable Long scheduleId) {
+
+		return CommonResponse.of(SuccessCode.GET_SCHEDULE_SUCCESS, scheduleService.getScheduleWithCommentList(scheduleId));
+	}
 
 	// 4. 일정 수정
 	@PatchMapping("/schedules/{scheduleId}")

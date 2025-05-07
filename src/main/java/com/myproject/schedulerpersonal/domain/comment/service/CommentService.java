@@ -45,7 +45,7 @@ public class CommentService {
 
 	}
 
-	// 2. TODO 일정 상세 조회 시 모든 댓글 조회 (오름차순)
+	// 2. 모든 댓글 조회
 	@Transactional
 	public List<CommentResponseDto> getCommentList(Long scheduleId) {
 
@@ -72,7 +72,6 @@ public class CommentService {
 		comment.updateComment(commentRequestDto.getContent());
 
 	}
-
 
 	// 4. 댓글 삭제
 	public void deleteComment(Long commentId) {

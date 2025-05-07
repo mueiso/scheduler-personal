@@ -1,14 +1,19 @@
 package com.myproject.schedulerpersonal.domain.schedule.service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
 import com.myproject.schedulerpersonal.common.enums.ErrorCode;
 import com.myproject.schedulerpersonal.common.exception.CustomException;
 import com.myproject.schedulerpersonal.common.util.EntityFetcher;
+import com.myproject.schedulerpersonal.domain.comment.dto.CommentResponseDto;
+import com.myproject.schedulerpersonal.domain.comment.entity.Comment;
+import com.myproject.schedulerpersonal.domain.comment.repository.CommentRepository;
 import com.myproject.schedulerpersonal.domain.schedule.dto.ScheduleRequestDto;
 import com.myproject.schedulerpersonal.domain.schedule.dto.ScheduleResponseDto;
+import com.myproject.schedulerpersonal.domain.schedule.dto.ScheduleWithCommentListResponseDto;
 import com.myproject.schedulerpersonal.domain.schedule.dto.UpdateScheduleRequestDto;
 import com.myproject.schedulerpersonal.domain.schedule.entity.Schedule;
 import com.myproject.schedulerpersonal.domain.schedule.repository.ScheduleRepository;
@@ -22,6 +27,7 @@ import lombok.RequiredArgsConstructor;
 public class ScheduleService {
 
 	private final ScheduleRepository scheduleRepository;
+	private final CommentRepository commentRepository;
 	private final EntityFetcher entityFetcher;
 
 	// 1. 일정 생성
@@ -60,16 +66,20 @@ public class ScheduleService {
 			.toList();
 	}
 
-	// 3. TODO 일정 단건 상세 조회
-	// @Transactional
-	// public ScheduleResponseDto getScheduleDetail(Long scheduleId) {
-	//
-	// 	Schedule schedule = entityFetcher.getScheduleOrThrow(scheduleId);
-	//
-	//
-	//
-	//
-	// }
+	// 3. TODO 일정 단건 상세 조회 → 댓글 오름차순으로
+	@Transactional
+	public ScheduleWithCommentListResponseDto getScheduleWithCommentList(Long scheduleId) {
+
+		Schedule schedule = entityFetcher.getScheduleOrThrow(scheduleId);
+
+		List<Comment> commentList = commentRepository.findAllBySchedule(schedule);
+
+		List<CommentResponseDto> commentResponseDtoList = commentList.stream()
+			.map(comment -> new CommentResponseDto(comment))
+			.collect(Collectors.toList());
+
+		return new ScheduleWithCommentListResponseDto(schedule, commentResponseDtoList);
+	}
 
 	// 4. 일정 수정
 	@Transactional
