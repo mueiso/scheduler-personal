@@ -60,7 +60,7 @@ public class ScheduleService {
 			.toList();
 	}
 
-	// 3. 일정 단건 상세 조회
+	// 3. TODO 일정 단건 상세 조회
 	// @Transactional
 	// public ScheduleResponseDto getScheduleDetail(Long scheduleId) {
 	//
@@ -88,10 +88,5 @@ public class ScheduleService {
 
 		scheduleRepository.delete(schedule);
 	}
-
-
-
-
-
 
 }

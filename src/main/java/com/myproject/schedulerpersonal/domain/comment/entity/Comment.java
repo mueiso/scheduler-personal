@@ -1,5 +1,7 @@
 package com.myproject.schedulerpersonal.domain.comment.entity;
 
+import org.springframework.util.StringUtils;
+
 import com.myproject.schedulerpersonal.common.entity.BaseEntity;
 import com.myproject.schedulerpersonal.domain.schedule.entity.Schedule;
 import com.myproject.schedulerpersonal.domain.user.entity.User;
@@ -46,10 +48,12 @@ public class Comment extends BaseEntity {
 		this.schedule = schedule;
 	}
 
+	public void updateComment(String content) {
 
+		if(!StringUtils.isEmpty(content)) {
+			this.content = content;
+		}
 
-
-
-
+	}
 
 }

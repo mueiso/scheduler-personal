@@ -14,6 +14,7 @@ import com.myproject.schedulerpersonal.domain.comment.repository.CommentReposito
 import com.myproject.schedulerpersonal.domain.schedule.entity.Schedule;
 import com.myproject.schedulerpersonal.domain.user.entity.User;
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -24,6 +25,7 @@ public class CommentService {
 	private final EntityFetcher entityFetcher;
 
 	// 1. 댓글 저장
+	@Transactional
 	public CommentResponseDto createComment(
 		Long scheduleId,
 		CommentRequestDto commentRequestDto) {
@@ -43,7 +45,8 @@ public class CommentService {
 
 	}
 
-	// 2. 일정 상세 조회 시 모든 댓글 조회
+	// 2. TODO 일정 상세 조회 시 모든 댓글 조회
+	@Transactional
 	public List<CommentResponseDto> getCommentList(Long scheduleId) {
 
 		Schedule schedule = entityFetcher.getScheduleOrThrow(scheduleId);
@@ -61,7 +64,22 @@ public class CommentService {
 	}
 
 	// 3. 댓글 수정
+	@Transactional
+	public void editComment(Long commentId, CommentRequestDto commentRequestDto) {
+
+		Comment comment = entityFetcher.getCommentOrThrow(commentId);
+
+		comment.updateComment(commentRequestDto.getContent());
+
+	}
+
 
 	// 4. 댓글 삭제
+	public void deleteComment(Long commentId) {
+
+		Comment comment = entityFetcher.getCommentOrThrow(commentId);
+
+		commentRepository.delete(comment);
+	}
 
 }

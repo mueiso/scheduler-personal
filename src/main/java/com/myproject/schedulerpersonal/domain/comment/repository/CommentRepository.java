@@ -1,6 +1,7 @@
 package com.myproject.schedulerpersonal.domain.comment.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -10,5 +11,7 @@ import com.myproject.schedulerpersonal.domain.schedule.entity.Schedule;
 public interface CommentRepository extends JpaRepository<Comment, Long> {
 
 	List<Comment> findAllBySchedule(Schedule schedule);
+
+	Optional<Comment> findCommentById(Long id);
 
 }
