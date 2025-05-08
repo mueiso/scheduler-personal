@@ -11,7 +11,11 @@ public enum ErrorCode implements BaseCode {
 	SCHEDULE_NOT_FOUND(HttpStatus.NOT_FOUND, "일정을 찾을 수 없습니다."),
 
 	// Comment
-	COMMENT_NOT_FOUND(HttpStatus.NOT_FOUND,"댓글을 찾을 수 없습니다.");
+	COMMENT_NOT_FOUND(HttpStatus.NOT_FOUND,"댓글을 찾을 수 없습니다."),
+
+	// Reply
+	REPLY_NOT_FOUND(HttpStatus.NOT_FOUND,"대댓글을 찾을 수 없습니다."),
+	REPLY_ALREADY_EXISTS(HttpStatus.NOT_ACCEPTABLE,"대댓글이 이미 존재합니다.");
 
 	private final HttpStatus httpStatus;
 	private final String message;

@@ -8,7 +8,6 @@ import lombok.Getter;
 public class UserResponseDto {
 
 	private final Long id;
-
 	private final String userName;
 
 }

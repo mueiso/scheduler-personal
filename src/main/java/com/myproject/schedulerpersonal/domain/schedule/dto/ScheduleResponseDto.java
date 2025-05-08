@@ -12,17 +12,11 @@ import lombok.Getter;
 public class ScheduleResponseDto {
 
 	private final Long id;
-
 	private final String title;
-
 	private final String content;
-
 	private final String userName;
-
 	private final int commentCount;
-
 	private final LocalDateTime createdAt;
-
 	private final LocalDateTime updatedAt;
 
 	public ScheduleResponseDto (Schedule schedule) {

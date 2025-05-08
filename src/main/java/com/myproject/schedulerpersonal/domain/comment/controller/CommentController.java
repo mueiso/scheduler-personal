@@ -26,11 +26,11 @@ public class CommentController {
 
 	// 1. 댓글 저장
 	@PostMapping("/schedules/{scheduleId}/comments")
-	public CommonResponse<CommentResponseDto> saveComment(@PathVariable Long scheduleId,
+	public CommonResponse<CommentResponseDto> createComment(@PathVariable Long scheduleId,
 		@RequestBody CommentRequestDto commentRequestDto) {
 
 		return CommonResponse.of(SuccessCode.SAVE_COMMENT_SUCCESS,
-			commentService.createComment(scheduleId, commentRequestDto));
+			commentService.saveComment(scheduleId, commentRequestDto));
 	}
 
 	// 2. 모든 댓글 조회

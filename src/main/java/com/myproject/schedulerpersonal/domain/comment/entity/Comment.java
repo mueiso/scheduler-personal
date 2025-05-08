@@ -53,7 +53,6 @@ public class Comment extends BaseEntity {
 		if(!StringUtils.isEmpty(content)) {
 			this.content = content;
 		}
-
 	}
 
 }

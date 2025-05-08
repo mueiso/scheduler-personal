@@ -12,15 +12,10 @@ import lombok.Getter;
 public class CommentResponseDto {
 
 	private final Long id;
-
 	private final String content;
-
 	private final Long userId;
-
 	private final Long scheduleId;
-
 	private final LocalDateTime createdAt;
-
 	private final LocalDateTime updatedAt;
 
 	public CommentResponseDto(Comment comment) {

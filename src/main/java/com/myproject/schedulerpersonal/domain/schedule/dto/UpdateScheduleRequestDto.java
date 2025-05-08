@@ -8,7 +8,6 @@ import lombok.Getter;
 public class UpdateScheduleRequestDto {
 
 	private final String title;
-
 	private final String content;
 
 }

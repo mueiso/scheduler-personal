@@ -13,9 +13,7 @@ import lombok.Getter;
 public class ScheduleWithCommentListResponseDto {
 
 	private final String title;
-
 	private final String content;
-
 	private final String userName;
 
 	private final List<CommentResponseDto> commentResponseDtoList;

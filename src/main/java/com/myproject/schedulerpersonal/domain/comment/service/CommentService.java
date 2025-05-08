@@ -28,7 +28,7 @@ public class CommentService {
 
 	// 1. 댓글 저장
 	@Transactional
-	public CommentResponseDto createComment(
+	public CommentResponseDto saveComment(
 		Long scheduleId,
 		CommentRequestDto commentRequestDto) {
 
@@ -74,7 +74,6 @@ public class CommentService {
 		Comment comment = entityFetcher.getCommentOrThrow(commentId);
 
 		comment.updateComment(commentRequestDto.getContent());
-
 	}
 
 	// 4. 댓글 삭제
