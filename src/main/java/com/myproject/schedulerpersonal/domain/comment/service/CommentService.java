@@ -78,11 +78,14 @@ public class CommentService {
 	}
 
 	// 4. 댓글 삭제
+	@Transactional
 	public void deleteComment(Long commentId) {
 
 		Comment comment = entityFetcher.getCommentOrThrow(commentId);
 
 		commentRepository.delete(comment);
+
+		scheduleRepository.decreaseCommentCounts(comment.getSchedule().getId());
 	}
 
 }

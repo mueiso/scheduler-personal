@@ -16,7 +16,14 @@ public interface ScheduleRepository extends JpaRepository<Schedule, Long> {
 
 	Optional<Schedule> findScheduleById(Long id);
 
+	// commentCount 증가
 	@Modifying
 	@Query("UPDATE Schedule s SET s.commentCount = s.commentCount+1 WHERE s.id = :scheduleId")
 	void increaseCommentCounts(Long scheduleId);
+
+	// commentCount 감소
+	@Modifying
+	@Query("UPDATE Schedule s SET s.commentCount = s.commentCount-1 WHERE s.id = :scheduleId")
+	void decreaseCommentCounts(Long scheduleId);
+
 }
