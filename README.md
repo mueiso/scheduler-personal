@@ -21,7 +21,6 @@
 
 ## API 명세서
 |[🔗API URL](https://www.notion.so/teamsparta/API-ERD-1e62dc3ef51481bf920bcf6fd64be831)
-
 |:---:|
 
 <br>
