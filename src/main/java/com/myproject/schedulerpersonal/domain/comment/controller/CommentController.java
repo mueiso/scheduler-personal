@@ -33,7 +33,7 @@ public class CommentController {
 			commentService.saveComment(scheduleId, commentRequestDto));
 	}
 
-	// 2. 모든 댓글 조회
+	// 2. 해당 일정에 달린 모든 댓글 조회
 	@GetMapping("/schedules/{scheduleId}/comments")
 	public CommonResponse<List<CommentResponseDto>> getAllComments(@PathVariable Long scheduleId) {
 

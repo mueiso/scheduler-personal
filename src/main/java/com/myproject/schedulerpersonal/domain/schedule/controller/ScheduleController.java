@@ -27,14 +27,14 @@ public class ScheduleController {
 	private final ScheduleService scheduleService;
 
 	// 1. 일정 생성
-	@PostMapping("/{userId}/schedules")
+	@PostMapping("/users/{userId}/schedules")
 	public CommonResponse<ScheduleResponseDto> saveSchedule(@PathVariable Long userId, @RequestBody ScheduleRequestDto scheduleRequestDto) {
 
 		return CommonResponse.of(SuccessCode.CREATE_SCHEDULE_SUCCESS, scheduleService.createSchedule(userId, scheduleRequestDto));
 	}
 
 	// 2. 일정 목록 조회
-	@GetMapping("/{userId}/schedules")
+	@GetMapping("/users/{userId}/schedules")
 	public CommonResponse<List<ScheduleResponseDto>> getScheduleList(@PathVariable Long userId) {
 
 		return CommonResponse.of(SuccessCode.GET_ALL_SCHEDULES_SUCCESS, scheduleService.getAllSchedules(userId));

@@ -95,6 +95,10 @@ public class ScheduleService {
 
 		Schedule schedule = entityFetcher.getScheduleOrThrow(id);
 
+		List<Comment> comment = commentRepository.findAllBySchedule(schedule);
+
+		commentRepository.deleteCommentsBySchedule_Id(schedule.getId());
+
 		scheduleRepository.delete(schedule);
 	}
 

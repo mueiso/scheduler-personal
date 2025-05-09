@@ -49,7 +49,7 @@ public class CommentService {
 
 	}
 
-	// 2. 모든 댓글 조회
+	// 2. 해당 일정에 달린 모든 댓글 조회
 	@Transactional
 	public List<CommentResponseDto> getCommentList(Long scheduleId) {
 
