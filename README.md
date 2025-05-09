@@ -1,7 +1,7 @@
 # Scheduler-Personal Project
 ## 프로젝트 소개
 간단한 일정 관리 앱 입니다.<br>
-댓글 기능과 댓글에 대한 답글 기능을 함께 구현했습니다.
+일정에 댓글도 달고 상호 소통이 가능하도록 하는 앱을 구현하고자 했습니다.
 
 <br>
 
@@ -63,12 +63,15 @@
                    ├─entity
                    ├─enums
                    ├─exception
+                   ├─util
             └─ domain
                    ├─comment
                    │  └─controller, dto, entity, repository, service
                    ├─reply
                    │  └─controller, dto, entity, repository, service
-                   └─schedule
+                   ├─schedule
+                   │  └─controller, dto, entity, repository, service
+                   └─user
                       └─controller, dto, entity, repository, service
 ```
 
