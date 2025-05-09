@@ -186,5 +186,16 @@
 
 ![Image](https://github.com/user-attachments/assets/5cb7fb91-aad5-4a8a-ba86-36f80e478022)
 
+-----
+
+<br>
+
+## TroubleShooting
+
+|[🔗TroubleShooting URL](https://velog.io/@jess_kim/%EB%B3%B8-%EC%BA%A0%ED%94%8457%EC%9D%BC%EC%B0%A8)
+|:---:|
+
+<br>
+
 <br>
 <br>
