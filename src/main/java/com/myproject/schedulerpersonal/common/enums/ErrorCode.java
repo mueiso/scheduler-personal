@@ -36,4 +36,9 @@ public enum ErrorCode implements BaseCode {
 		return message;
 	}
 
+	// log 에도 에러메시지 출력하기 위한 메서드
+	public String getMessage(Object... args) {
+		return String.format(message, args);
+	}
+
 }

@@ -56,7 +56,7 @@ public class ScheduleService {
 		List<Schedule> scheduleList = scheduleRepository.findAllByUser(user);
 
 		if (scheduleList.isEmpty()) {
-			throw new CustomException(ErrorCode.SCHEDULE_NOT_FOUND);
+			throw new CustomException(ErrorCode.SCHEDULE_NOT_FOUND, "일정을 찾을 수 없습니다.");
 		}
 
 		// List<Schedule> → List<ScheduleResponseDto>로 변환된 리스트를 반환
