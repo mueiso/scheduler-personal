@@ -65,5 +65,4 @@ public class ScheduleController {
 		return CommonResponse.of(SuccessCode.DELETE_SCHEDULE_SUCCESS);
 	}
 
-
 }
